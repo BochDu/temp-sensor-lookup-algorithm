@@ -102,20 +102,8 @@ int main()
     for (int i = 0; i < MAX_DATA_SIZE; i++)
     {
         printf("i:%d,t:%f,r:%f\n", i, data[i].temperature, data[i].resistance);
+        // printf("{%f,%f},\n", data[i].temperature, data[i].resistance);
 
-        // if (i == 0)
-        // {
-        //     printf("{");
-        // }
-        // else if (i == MAX_DATA_SIZE - 1)
-        // {
-        //     printf("{%f,%f}", data[i].temperature, data[i].resistance);
-        //     printf("}\n");
-        // }
-        // else
-        // {
-        //     printf("{%f,%f},", data[i].temperature, data[i].resistance);
-        // }
     }
 
     // 二分查找给定电阻值
