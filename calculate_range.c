@@ -26,6 +26,17 @@ float binarySearch(DataPoint data[], int data_size, float cur_resistance)
 
     float epsilon = 0.000001; // 定义一个很小的误差范围
 
+    if (cur_resistance > data[0].resistance)
+    {
+        // printf("R Value above lower bound. Returning lowest temperature.\n");
+        return data[0].temperature;
+    }
+    if (cur_resistance < data[data_size - 1].resistance)
+    {
+        // printf("R Value below upper bound. Returning highest temperature.\n");
+        return data[data_size - 1].temperature;
+    }
+
     // 二分查找函数
     while (low <= high)
     {
@@ -41,20 +52,10 @@ float binarySearch(DataPoint data[], int data_size, float cur_resistance)
         }
         else if (data[mid].resistance > cur_resistance)
         {
-            if (low == data_size - 1)
-            {
-                cur_temperature = data[data_size - 1].temperature;
-                break;
-            }
             low = mid + 1;
         }
         else
         {
-            if (high == 0)
-            {
-                cur_temperature = data[0].temperature;
-                break;
-            }
             high = mid - 1;
         }
         // printf("low:%d,high:%d\n", low, high);
@@ -75,6 +76,10 @@ float binarySearch(DataPoint data[], int data_size, float cur_resistance)
 
         // 输出插值结果
         // printf("nofind temperature for cur_resistance %f: %f\n", cur_resistance, cur_temperature);
+    }
+    else
+    {
+        cur_temperature = data[low].temperature;
     }
 
     return cur_temperature;
